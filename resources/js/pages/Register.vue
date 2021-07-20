@@ -64,7 +64,7 @@ import movieDataService from "../services/movieDataService";
   export default {
     data() {
       return {
-        img_src:'/storage/register.jpg',
+        img_src:'/register.jpg',
         name: '',
         email: '',
         password: '',

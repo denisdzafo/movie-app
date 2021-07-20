@@ -65,7 +65,7 @@ import movieDataService from "../services/movieDataService";
     export default {
     data() {
       return {
-        img_src:'/storage/register.jpg',
+        img_src:'/register.jpg',
         movies: [],
         categories: [],
         searchText: null,

@@ -54,7 +54,7 @@
         success: false,
         has_error: false,
         error: '',
-        img_src:'/storage/register.jpg',
+        img_src:'/register.jpg',
       }
     },
     mounted() {
