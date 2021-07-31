@@ -13,8 +13,13 @@ class Category extends Model
         'name'
     ];
 
+    //public function movies()
+    //{
+    //    return $this->hasMany('App\Models\Movie');
+    //}
+
     public function movies()
     {
-        return $this->hasMany('App\Models\Movie');
+        return $this->belongsToMany(Movie::class);
     }
 }

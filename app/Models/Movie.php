@@ -13,8 +13,13 @@ class Movie extends Model
         'title', 'refrence_code', 'category_id', 'image', 'year'
     ];
 
+    //public function categories()
+    //{
+    //    return $this->belongsTo('App\Models\Category', 'category_id');
+    //}
+
     public function categories()
     {
-        return $this->belongsTo('App\Models\Category', 'category_id');
+        return $this->belongsToMany(Category::class);
     }
 }

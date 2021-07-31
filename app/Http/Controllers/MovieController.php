@@ -27,7 +27,6 @@ class MovieController extends Controller
         if($request->get('user_id')){
             $userRequestNumber = $this->userRepository->getUserRequestNumber($request->get('user_id'));
             if($userRequestNumber < 1000){
-                $requestParammeters = [];
                 $category_id = $request->get('category_id');
                 $searchText = $request->get('searchText');
                 $movies = $this->movieRepository->getMoviesByCategoryAndSearch($category_id, $searchText);
@@ -64,12 +63,12 @@ class MovieController extends Controller
 
     private function transformSingleMovie($movie)
     {
-        $category =  $this->movieRepository->getCategory($movie['category_id']);
+        
         $data = [];
         $data['id']=$movie['id'];
         $data['title']=$movie['title'];
         $data['refrence_code']=$movie['refrence_code'];
-        $data['category']=$category['name'];
+        $data['category']=$movie->categories->name;
         $data['image']=$movie['image'];
         $data['year']=$movie['year'];
 

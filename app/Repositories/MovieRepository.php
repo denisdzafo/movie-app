@@ -19,7 +19,7 @@ class MovieRepository
 	
 	public function getAllMovies()
 	{
-        return $this->movie->all();
+        return $this->movie->get();
 	}
 
 	public function getSingleMovie($id)
@@ -29,8 +29,12 @@ class MovieRepository
 
 	public function getMoviesByCategoryAndSearch($category_id, $searchText = null)
 	{
-		if($category_id)
-			return $this->movie->where('title', 'LIKE', '%'.$searchText.'%')->where('category_id', $category_id)->get();
+		if($category_id){
+			return $this->movie->whereHas('categories', function($q) use($category_id){
+    			               $q->where('categories.id', $category_id); 
+
+		             })->where('title', 'LIKE', '%'.$searchText.'%')->get();
+		}
 
 		return $this->movie->where('title', 'LIKE', '%'.$searchText.'%')->get();
 	}
